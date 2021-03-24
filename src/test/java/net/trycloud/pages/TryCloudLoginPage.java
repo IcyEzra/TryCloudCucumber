@@ -19,4 +19,7 @@ public class TryCloudLoginPage {
 
     @FindBy(id = "submit-form")
     public WebElement loginButton;
+
+    @FindBy(xpath = "//*[@id=\"body-login\"]/div[1]/div/main/div/div/form/fieldset/p[3]")
+    public WebElement LoginErrorMsg;
 }

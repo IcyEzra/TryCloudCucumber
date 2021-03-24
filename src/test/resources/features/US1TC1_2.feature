@@ -18,15 +18,12 @@ Feature: Login to TryCloud account feature
 #  4.Click login button
 #  5.Verify the URL is changed to homepage’s url(Put this test case in testBase class with an annotation so it runs for all the test case)
 
-
-#Feature: Logging into TryCloud with incorrect credentials
- # As a user I should not be able to login with in correct credentials
-
-  #Scenario: Login attempt with incorrect credentials
-   # Given User is on the login page
-    #When user enters incorrect info
-    #And clicks login button
-    #Then User should see message stating incorrect credentials was used, title should be the same
+  @US1TC2
+  Scenario: Login attempt with incorrect credentials
+    Given User is on the login page
+    When user enters incorrect info
+    And clicks login button
+    Then User should see message stating incorrect credentials was used, title should be the same
 
 #  Test case #2 - verify user cannot login with invalid credentials
 #  1.Navigate to login page http://qa.trycloud.net/index.php/login?clear=1

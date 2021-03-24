@@ -7,6 +7,7 @@ import io.cucumber.java.en.When;
 import net.trycloud.pages.TryCloudLoginPage;
 import net.trycloud.utilities.ConfigurationReader;
 import net.trycloud.utilities.Driver;
+import org.junit.Assert;
 
 public class US1StepDefinitions {
 
@@ -38,7 +39,12 @@ public class US1StepDefinitions {
 
         @Then("user lands on homepage")
         public void user_lands_on_homepage(){
-
+                boolean titleAssert = Driver.getDriver().getTitle().contains("Dashboard");
+                if(titleAssert == true){
+                        Assert.assertTrue(true);
+                }else{
+                        Assert.assertTrue(false);
+                }
         }
 // -------------------------------------------------------------------------------------------------------
 
@@ -48,10 +54,15 @@ public class US1StepDefinitions {
 
         @When("user enters incorrect info")
         public void userEntersIncorrectInfo() {
+                tryCloudLoginPage.UserNameBox.sendKeys("wrongUser");
+                tryCloudLoginPage.PasswordBox.sendKeys("wrongPass");
+                tryCloudLoginPage.loginButton.click();
         }
 
         @Then("User should see message stating incorrect credentials was used, title should be the same")
         public void userShouldSeeMessageStatingIncorrectCredentialsWasUsedTitleShouldBeTheSame() {
+                Assert.assertTrue(Driver.getDriver().getTitle().equals("Trycloud QA"));
+                Assert.assertTrue(tryCloudLoginPage.LoginErrorMsg.isDisplayed());
         }
 }
 
